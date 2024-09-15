@@ -51,6 +51,12 @@
         "date": "2024-09-15T22:51:13.389Z",
         "action": "Tarefa adicionada",
         "details": "Nova tarefa: Receber doações"
+      },
+      {
+        "id": 1726443015101,
+        "date": "2024-09-15T23:30:15.101Z",
+        "action": "Informações atualizadas",
+        "details": "Detalhes do voluntário foram atualizados"
       }
     ]
   },
@@ -61,6 +67,15 @@
     "phone": "11988888888",
     "availability": "Noites",
     "skills": "Administração, Marketing",
+    "status": "Aprovado"
+  },
+  {
+    "name": "Paulo Silva",
+    "email": "paulo@teste.com",
+    "phone": "156345645456",
+    "availability": "terças de tarde",
+    "skills": "banho",
+    "id": 1726443461955,
     "status": "Aprovado"
   }
 ]

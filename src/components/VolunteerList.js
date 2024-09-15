@@ -14,6 +14,7 @@ export default function VolunteerList() {
   const [sortField, setSortField] = useState('name');
   const [sortDirection, setSortDirection] = useState('asc');
   const [selectedVolunteerId, setSelectedVolunteerId] = useState(null);
+  const [isAddingVolunteer, setIsAddingVolunteer] = useState(false);
 
   useEffect(() => {
     fetchVolunteers();
@@ -94,6 +95,17 @@ export default function VolunteerList() {
     }
   }
 
+  async function handleAddVolunteer(newVolunteer) {
+    try {
+      await volunteerService.addVolunteer(newVolunteer);
+      setIsAddingVolunteer(false);
+      setUpdateTrigger(prev => prev + 1);
+    } catch (error) {
+      console.error('Erro ao adicionar voluntário:', error);
+      setError('Erro ao adicionar voluntário. Por favor, tente novamente.');
+    }
+  }
+
   function handleViewDetails(id) {
     setSelectedVolunteerId(id);
   }
@@ -121,8 +133,24 @@ export default function VolunteerList() {
     );
   }
 
+  if (isAddingVolunteer) {
+    return (
+      <VolunteerForm
+        onSubmit={handleAddVolunteer}
+        onCancel={() => setIsAddingVolunteer(false)}
+      />
+    );
+  }
+
   return (
     <div>
+      <h2 className="text-2xl font-bold mb-4">Lista de Voluntários</h2>
+      <button
+        onClick={() => setIsAddingVolunteer(true)}
+        className="bg-green-500 text-white px-4 py-2 rounded mb-4"
+      >
+        Adicionar Voluntário
+      </button>
       <div className="mb-4 flex space-x-4">
         <input
           type="text"

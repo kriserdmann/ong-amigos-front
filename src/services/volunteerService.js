@@ -9,8 +9,13 @@ export const volunteerService = {
   },
 
   getVolunteerById: async (id) => {
-    const response = await axios.get(`${API_URL}?id=${id}`);
-    return response.data;
+    try {
+      const response = await axios.get(`${API_URL}?id=${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Erro ao buscar voluntário com ID ${id}:`, error);
+      throw error;
+    }
   },
 
   approveVolunteer: async (id) => {
@@ -74,5 +79,10 @@ export const volunteerService = {
   getActivityLog: async (volunteerId) => {
     const volunteer = await volunteerService.getVolunteerById(volunteerId);
     return volunteer.activityLog || [];
+  },
+
+  addVolunteer: async (volunteer) => {
+    const response = await axios.post(API_URL, volunteer);
+    return response.data;
   }
 };

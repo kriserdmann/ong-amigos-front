@@ -60,6 +60,15 @@ export default function handler(req, res) {
         res.status(400).json({ message: 'ID do voluntário não fornecido' });
       }
       break;
+    case 'POST':
+      const newVolunteer = req.body;
+      const volunteers = getVolunteers();
+      newVolunteer.id = Date.now(); // Gera um ID único
+      newVolunteer.status = 'Pendente'; // Define o status inicial
+      volunteers.push(newVolunteer);
+      saveVolunteers(volunteers);
+      res.status(201).json(newVolunteer);
+      break;
     default:
       res.setHeader('Allow', ['GET', 'PUT']);
       res.status(405).end(`Method ${method} Not Allowed`);

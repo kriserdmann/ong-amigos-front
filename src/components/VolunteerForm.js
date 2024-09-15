@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { volunteerService } from '../services/volunteerService';
 
-export default function VolunteerForm({ volunteer, onSubmit, onCancel }) {
+export default function VolunteerForm({ volunteer, onVolunteerAdded }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,9 +21,25 @@ export default function VolunteerForm({ volunteer, onSubmit, onCancel }) {
     setFormData(prevData => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit(formData);
+    try {
+      const newVolunteer = await volunteerService.addVolunteer(formData);
+      if (onVolunteerAdded) {
+        onVolunteerAdded(newVolunteer);
+      }
+      // Limpar o formulário após o envio bem-sucedido
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        availability: '',
+        skills: '',
+      });
+    } catch (error) {
+      console.error('Erro ao adicionar voluntário:', error);
+      // Você pode adicionar um estado para mostrar uma mensagem de erro ao usuário
+    }
   };
 
   return (
@@ -87,11 +104,8 @@ export default function VolunteerForm({ volunteer, onSubmit, onCancel }) {
         ></textarea>
       </div>
       <div className="flex justify-end space-x-2">
-        <button type="button" onClick={onCancel} className="px-4 py-2 bg-gray-300 rounded">
-          Cancelar
-        </button>
         <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
-          Salvar
+          Cadastrar
         </button>
       </div>
     </form>
