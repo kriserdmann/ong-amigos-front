@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Rex",
+    "species": "Cachorro",
+    "breed": "Labrador",
+    "age": 3,
+    "description": "Rex é um cachorro amigável e brincalhão.",
+    "status": "Disponível",
+    "imageUrl": "images/animals/rex.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Miau",
+    "species": "Gato",
+    "breed": "Siamês",
+    "age": 2,
+    "description": "Miau é uma gata calma e carinhosa.",
+    "status": "Disponível",
+    "imageUrl": "/images/animals/miau.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Totó",
+    "species": "Cachorro",
+    "breed": "Sem raça definida",
+    "age": "3",
+    "description": "estremamente dócil e brincaçhão. Ideal para companhia.",
+    "status": "Disponível",
+    "imageUrl": "/images/animals/miau.jpg"
+  }
+]
