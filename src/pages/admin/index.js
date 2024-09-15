@@ -1,5 +1,6 @@
 import AdminLayout from '../../components/AdminLayout';
 import ProtectedRoute from '../../components/ProtectedRoute';
+import AdminDashboard from '../../components/AdminDashboard';
 import Link from 'next/link';
 
 function AdminCard({ title, link }) {
@@ -11,9 +12,10 @@ function AdminCard({ title, link }) {
   );
 }
 
-function AdminDashboard() {
+function AdminPanel() {
   return (
     <AdminLayout currentPage="dashboard">
+      <AdminDashboard />
       <h1 className="text-3xl font-semibold mb-6">Painel de Administração</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <AdminCard title="Gerenciar Animais" link="/admin/animais" />
@@ -26,10 +28,10 @@ function AdminDashboard() {
   );
 }
 
-export default function ProtectedAdminDashboard() {
+export default function ProtectedAdminPanel() {
   return (
     <ProtectedRoute adminOnly>
-      <AdminDashboard />
+      <AdminPanel />
     </ProtectedRoute>
   );
 }

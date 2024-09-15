@@ -19,6 +19,12 @@
         "dueDate": "2024-09-19",
         "id": 1726439356240,
         "status": "Pendente"
+      },
+      {
+        "description": "Receber doações",
+        "dueDate": "2024-09-26",
+        "id": 1726440673364,
+        "status": "Pendente"
       }
     ],
     "activityLog": [
@@ -39,6 +45,12 @@
         "date": "2024-09-15T22:29:20.750Z",
         "action": "Status da tarefa atualizado",
         "details": "Tarefa 1 atualizada para Em andamento"
+      },
+      {
+        "id": 1726440673389,
+        "date": "2024-09-15T22:51:13.389Z",
+        "action": "Tarefa adicionada",
+        "details": "Nova tarefa: Receber doações"
       }
     ]
   },
